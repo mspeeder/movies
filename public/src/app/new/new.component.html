@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container">
+  <h4>Submit a movie and your review</h4>
+
+  <form (submit)="createAMovie()">
+    <p *ngIf="title.invalid && title.touched">You need to input your name.</p>
+    <div class="form-group" >
+      <label>Movie Title:</label>
+        <input type="text" name="title" required minlength="3" #title="ngModel" [(ngModel)]="newMovie.title" />
+    </div>
+
+    <p *ngIf="name.invalid && name.touched">You need to input your name.</p>
+    <div class="form-group" >
+      <label>Your name:</label>
+        <input type="text" name="name" required minlength="3" #name="ngModel" [(ngModel)]="newMovie.ratings[0].name" />
+    </div>
+
+    <!-- <div class="form-group" >
+      <label>Stars:</label>
+        <input type="text" name="newMovie.ratings[0].star" [(ngModel)]="newMovie.ratings[0].star" />
+    </div> -->
+
+    <div class="form-group">
+        <label>Stars:</label>
+        <select name="star" [(ngModel)]="newMovie.ratings[0].star" >
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+          </select>
+    </div>
+
+    <p *ngIf="title.invalid && title.touched">The review has to be at least 3 characters.</p>
+    <div class="form-group" >
+      <label>Your review:</label>
+      <input type="text" name="review" required minlength="3" #review="ngModel" [(ngModel)]="newMovie.ratings[0].review" />
+      <input type="submit" value="submit" />
+    </div>
+    
+  </form>  
+  <button type="button" [routerLink]="['/movies']">Cancel</button>
+</div>
+
+

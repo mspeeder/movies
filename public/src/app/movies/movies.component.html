@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="container">
+  <div class="row">
+    <div class="col-5"><h4>Movie List</h4></div><div class="col-5"><button type="button" [routerLink]="['/movies/new']">Add a new movie</button></div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Movie title</th>
+        <th scope="col">Available Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let movie of movies">
+      <tr>
+        <td>{{movie.title}}</td>
+        <td><button class="btn btn-outline-secondary" type="button" [routerLink]="['/movies', movie._id]">Read reviews</button>&nbsp; <button class="btn btn-outline-primary"type="button" [routerLink]="['/movies', movie._id,'review']">Write reviews</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container">
+  <div class="row">
+    <div class="col-5"><h4>Reviews for {{thisMovie.title}} </h4>
+    </div><div class="col-5"><button type="button" (click)="deleteAMovie(thisMovie._id)" [routerLink]="['/movies']">Delete Movie</button></div>
+  </div>
+</div>
+<br>
+<div class="container" >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Reviewer</th>
+        <th scope="col">Stars</th>
+        <th scope="col">Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rating of thisMovie.ratings" >
+        <td>{{rating.name}}</td>
+        <td>{{rating.star}}</td>
+        <td>{{rating.review}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

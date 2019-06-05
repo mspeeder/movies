@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container">
+  <h4>Add a review for {{updateMovie.title}}</h4>
+  <!-- {{ yourname.errors | json }} -->
+  <!-- {{ yourname.valid | json }} -->
+  <form (submit)="createAReview(updateMovie._id)">
+    <!-- validation -->
+    <p *ngIf="yourname.invalid && yourname.touched">You need to input your name.</p>
+
+    <div class="form-group" >
+      <label>Your name:</label>
+        <input type="text" name="yourname" #yourname= "ngModel" required [(ngModel)]="rating.name" />
+    </div>
+
+    <div class="form-group">
+        <label>Stars:</label>
+        <select name="star" [(ngModel)]="rating.star" >
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+          </select>
+    </div>
+    
+    <!--validation -->
+    <p *ngIf="review.invalid && review.touched">You need to input review</p>
+
+    <div class="form-group" >
+      <label>Your review:</label>
+      <input type="text" name="review" #review = "ngModel" required [(ngModel)]="rating.review"  />
+      <!-- disable the submit button if yourname is invalid -->
+      <input [disabled]="yourname.invalid" type="submit" value="submit" />
+    </div>
+  </form>  
+  <button  type="button" [routerLink]="['/movies']">Cancel</button>
+</div>
+
